@@ -1,0 +1,31 @@
+total 8
+-rwxrw-rw- 1 alzheimeer alzheimeer  37 Jun 15 23:46 #5-firstlines#
+drwxrwxrwx 1 alzheimeer alzheimeer 512 Jun 16 00:16 .
+drwxrwxrwx 1 alzheimeer alzheimeer 512 Jun 15 22:19 ..
+-rwxrw-rw- 1 alzheimeer alzheimeer  36 Jun 15 23:02 0-hello_world
+-rwxrw-rw- 1 alzheimeer alzheimeer  33 Jun 15 23:33 1-confused_smiley
+-rwxrw-rw- 1 alzheimeer alzheimeer   0 Jun 15 23:21 10-no_more_js
+-rwxrw-rw- 1 alzheimeer alzheimeer   0 Jun 15 23:21 11-directories
+-rwxrw-rw- 1 alzheimeer alzheimeer   0 Jun 15 23:21 12-newest_files
+-rwxrw-rw- 1 alzheimeer alzheimeer  36 Jun 15 23:21 13-unique
+-rwxrw-rw- 1 alzheimeer alzheimeer   0 Jun 15 23:21 14-findthatword
+-rwxrw-rw- 1 alzheimeer alzheimeer   0 Jun 15 23:21 15-countthatword
+-rwxrw-rw- 1 alzheimeer alzheimeer   0 Jun 15 23:21 16-whatsnext
+-rwxrw-rw- 1 alzheimeer alzheimeer  36 Jun 15 23:21 17-hidethisword
+-rwxrw-rw- 1 alzheimeer alzheimeer   0 Jun 15 23:20 18-letteronly
+-rwxrw-rw- 1 alzheimeer alzheimeer  36 Jun 15 23:20 19-AZ
+-rwxrw-rw- 1 alzheimeer alzheimeer  28 Jun 15 23:36 2-hellofile
+-rwxrw-rw- 1 alzheimeer alzheimeer  36 Jun 15 23:20 20-hiago
+-rwxrw-rw- 1 alzheimeer alzheimeer  36 Jun 15 23:20 21-reverse
+-rwxrw-rw- 1 alzheimeer alzheimeer  36 Jun 15 23:19 22-users_and_homes
+-rwxrw-rw- 1 alzheimeer alzheimeer  39 Jun 15 23:39 3-twofiles
+-rwxrw-rw- 1 alzheimeer alzheimeer  29 Jun 15 23:43 4-lastlines
+-rwxrw-rw- 1 alzheimeer alzheimeer  29 Jun 15 23:51 5-firstlines
+-rwxrw-rw- 1 alzheimeer alzheimeer  40 Jun 16 00:05 6-third_line
+-rwxrw-rw- 1 alzheimeer alzheimeer  87 Jun 15 23:55 7-file
+-rwxrw-rw- 1 alzheimeer alzheimeer  36 Jun 16 00:16 8-cwd_state
+-rwxrw-rw- 1 alzheimeer alzheimeer  36 Jun 15 23:21 9-duplicate_last_line
+-rw-rw-rw- 1 alzheimeer alzheimeer 673 Jun 15 22:29 README.md
+-rw-rw-rw- 1 alzheimeer alzheimeer  17 Jun 16 00:06 \*\\'"Holberton School"\'\\*$\?\*\*\*\*\*:)
+-rw-rw-rw- 1 alzheimeer alzheimeer 727 Jun 16 00:00 iacta
+-rw-rw-rw- 1 alzheimeer alzheimeer   0 Jun 16 00:16 ls_cwd_content
