@@ -1,2 +1,2 @@
 #!/bin/bash
-holberton-system_engineering-devops
+echo $(cut -b 1 | tr -d "\n")
