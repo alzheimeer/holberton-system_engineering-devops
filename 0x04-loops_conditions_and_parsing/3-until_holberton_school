@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#Prints Holberton School to stdout using an until loop
+i=0
+until ((i == 10));
+do
+	echo Holberton School
+	i=$((i+1))
+done

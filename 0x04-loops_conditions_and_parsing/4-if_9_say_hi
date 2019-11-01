@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Displays Holberton School 10 times but 9 Hi
+i=0
+while((i < 10));
+do
+	if((i==9));
+	then
+	    echo Hi
+	fi
+	    echo Holberton School
+	i=$((i+1))
+done
