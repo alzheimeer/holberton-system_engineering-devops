@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# use a trap
+trap 'echo "I am invincible!!!"' 15
+trap no_ctrlc SIGINT
+while true
+do
+	echo "To infinity and beyond"
+   	sleep 2
+done
