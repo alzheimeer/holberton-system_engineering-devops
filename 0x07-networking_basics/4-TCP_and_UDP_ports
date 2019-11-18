@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#TPC UDP listen sockets
+netstat --listening --program
