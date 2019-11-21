@@ -1,0 +1,12 @@
+echo "hello world"
+pwd
+ls
+cat access.log
+cat access.log | tail -5
+grep 'GET' access.log
+grep -l "500" *
+find . -name "access.log*"
+grep -h 500 **/access.log*
+grep -Pho '^\d+\.\d+\.\d+\.\d+' **/access.log*
+
+
