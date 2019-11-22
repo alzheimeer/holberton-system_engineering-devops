@@ -1,0 +1,10 @@
+for f in $(find . -type f -name "*.*"); do mv "$f" "${f%.*}"; done
+ls | tr ' ' '.'
+find . -name "*.tf" -type f -exec dirname {} \; | sort | uniq
+find . -type f -name '[[:digit:]]*' -printf '%f\n'
+sed -n '25p' faces.txt
+tac README
+awk '!x[$0]++' faces.txt
+cat table.csv | column -t -s","
+for num in $(cat random-numbers.txt); do [[ $num == $(factor $num | cut -d" " -f2) ]] && echo $num; done | sort | uniq | wc -l
+perl -pne  's/!(?![ \n])//g;' war_and_peace.txt | perl -pne 's/(?<=[.])!//g' | perl -pne 's/!(?= [a-z])//g'
