@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Connect using the private key
+
+ssh-keygen -f holberton -b 4096 -N betty
