@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 #Install nginx
 
-exec {'/usr/bin/env apt-get -y update': }
-exec {'/usr/bin/env apt-get -y install nginx': }
-exec {'/usr/bin/env echo "Holberton School" > /var/www/html/index.nginx-debian.html': }
-exec {'/usr/bin/env sed -i "/server_name _;/ a\\\trewrite ^/redirect_me https://www.youtube.com/ permanent;" /etc/nginx/sites-available/default': }
-exec {'/usr/bin/env service nginx start': }
+exec {'Install nginx':
+  command  => 'sudo apt-get -y update && sudo apt-get -y install nginx && sudo echo "Holberton School" > /var/www/html/index.nginx-debian.html && new_string="\\\trewrite ^/redirect_me https://www.youtube.com/ permanent;" && sudo sed -i "42i $new_string" /etc/nginx/sites-available/default && sudo service nginx start',
+    provider => shell,
+    }
