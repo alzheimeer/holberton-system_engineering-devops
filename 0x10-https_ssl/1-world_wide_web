@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Dig subdomain show info
+
+if [ "$#" -eq 1 ]
+then
+    dom="www lb-01 web-01 web-02"
+else
+    dom=$2
+fi
+for sub in $dom
+do
+    echo -n "The subdomain $sub "
+    dig "$sub.$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{ print "is a " $4 " record and points to " $5}'
+done
