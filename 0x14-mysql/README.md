@@ -55,11 +55,14 @@ Ahora
 3.		damos permisos de replica al esclavo;			GRANT REPLICATION SLAVE ON *.* TO 'replica_user'@'%' IDENTIFIED BY 'root';
 4.		refrescamos						FLUSH PRIVILEGES;
 
-4.1		Cuadrando permisos en ambos servers con el puerto 3306: sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 3306         Y  sudo ufw allow 3306/tcp
+4.1		Cuadrando permisos en ambos servers con el puerto 3306:
+		sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 3306    
+		Y
+		sudo ufw allow 3306/tcp
 
 5.		configuramos el archivo conf del server con:		sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
 		y agregamos o habilitamos las siguientes lineas:	
-							#bind-address            = 12.34.56.789
+							#bind-address           = 12.34.56.789
 							server-id               = 1
 							log_bin                 = /var/log/mysql/mysql-bin.log
 							binlog_do_db            = tyrell_corp
@@ -83,8 +86,9 @@ Ahora
 3.		importamos la base de datos previamente creada	mysql -u root -p tyrell_corp < tyrell_corp.sql
 3.1.		agregamos los permisos de select 			
 		GRANT SELECT ON mysql.user TO 'holberton_user'@'localhost' IDENTIFIED BY 'projectcorrection280hbtn';
-4.		configuramos el archivo conf del server 2.	sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
-					agregamos:	
+		
+4.		configuramos el archivo conf del server dos:			sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+		agregamos o habilitamos las siguientes lineas:	
 							#bind-address           = 12.34.56.789
 							server-id               = 2
 							relay-log               = /var/log/mysql/mysql-relay-bin.log
