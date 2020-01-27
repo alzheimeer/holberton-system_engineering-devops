@@ -18,7 +18,7 @@ y agregar en ese archivo las keys que pueden entrar, una ca a ser la de holberto
 
 emacs .ssh/authorized_keys
 
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNdtrNGtTXe5Tp1EJQop8mOSAuRGLjJ6DW4PqX4wId/Kawz35ESampIqHSOTJmbQ8UlxdJuk0gAXKk3Ncle4safGYqM/VeDK3LN5iAJxf4kcaxNtS3eVxWBE5iF3FbIjOqwxw5Lf5sRa5yXxA8HfWidhbIG5TqKL922hPgsCGABIrXRlfZYeC0FEuPWdr6smOElSVvIXthRWp9cr685KdCI+COxlj1RdVsvIo+zunmLACF9PYdjB2s96Fn0ocD3c5SGLvDOFCyvDojSAOyE70ebIElnskKsDTGwfT4P6jh9OBzTyQEIS2jOaE5RQq4IB4DsMhvbjDSQrP0MdCLgwkN
+		ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNdtrNGtTXe5Tp1EJQop8mOSAuRGLjJ6DW4PqX4wId/Kawz35ESampIqHSOTJmbQ8UlxdJuk0gAXKk3Ncle4safGYqM/VeDK3LN5iAJxf4kcaxNtS3eVxWBE5iF3FbIjOqwxw5Lf5sRa5yXxA8HfWidhbIG5TqKL922hPgsCGABIrXRlfZYeC0FEuPWdr6smOElSVvIXthRWp9cr685KdCI+COxlj1RdVsvIo+zunmLACF9PYdjB2s96Fn0ocD3c5SGLvDOFCyvDojSAOyE70ebIElnskKsDTGwfT4P6jh9OBzTyQEIS2jOaE5RQq4IB4DsMhvbjDSQrP0MdCLgwkN
 
 
 # Instalar Mysql: 
@@ -33,9 +33,9 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNdtrNGtTXe5Tp1EJQop8mOSAuRGLjJ6DW4PqX4wId
 8.		FLUSH PRIVILEGES;
 9.		quit
 
-10. desde afuera miramos permisos:     mysql -uholberton_user -p -e "SHOW GRANTS FOR 'holberton_user'@'localhost'"
+10.		desde afuera miramos permisos:     mysql -uholberton_user -p -e "SHOW GRANTS FOR 'holberton_user'@'localhost'"
 
-****. Los pasos de arriba son para cuando se tenga que instalar Mysql en dos servidores uno maestro y un esclavo o replica.
+		****. Los pasos de arriba son para cuando se tenga que instalar Mysql en dos servidores uno maestro y un esclavo o replica.
 
 Ahora 
 
@@ -51,14 +51,14 @@ Ahora
 
 1.		creamos usuario replica				CREATE USER IF NOT EXISTS 'replica_user'@'%' IDENTIFIED BY 'root';
 2.		damos permisos SELECT a la tabla mysql.user		GRANT SELECT ON mysql.user TO 'holberton_user'@'localhost' IDENTIFIED BY 'projectcorrection280hbtn';
-	(para que holbi pueda revisar)
+		(para que holbi pueda revisar)
 3.		damos permisos de replica al esclavo;			GRANT REPLICATION SLAVE ON *.* TO 'replica_user'@'%' IDENTIFIED BY 'root';
 4.		refrescamos						FLUSH PRIVILEGES;
 
 Cuadrando permisos en ambos servers con el puerto 3306: sudo ufw allow from 127.0.0.1 to 127.0.0.1 port 3306         Y  sudo ufw allow 3306/tcp
 
-5. configuramos el archivo conf del server 1.		sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
-					agregamos:	
+5.		configuramos el archivo conf del server con:		sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+		y agregamos o habilitamos las siguientes lineas:	
 							#bind-address            = 12.34.56.789
 							server-id               = 1
 							log_bin                 = /var/log/mysql/mysql-bin.log
@@ -68,9 +68,9 @@ Cuadrando permisos en ambos servers con el puerto 3306: sudo ufw allow from 127.
 8.		Bloqueamos la Base:					FLUSH TABLES WITH READ LOCK;
 9.		tecleamos:						SHOW MASTER STATUS;
 
-File             | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set |
-+------------------+----------+--------------+------------------+-------------------+
-| mysql-bin.000001 |      154 | tyrell_corp  |                  |                   |
+		File             | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set |
+		+------------------+----------+--------------+------------------+-------------------+
+		| mysql-bin.000001 |      154 | tyrell_corp  |                  |                   |
 
 10.		salimos y sacamos una copia de la base de datos	mysqldump -uholberton_user -p --opt tyrell_corp > tyrell_corp.sql
 11.		entramos de nuevo a Mysql y desbloqueamos		UNLOCK TABLES;
@@ -84,17 +84,20 @@ File             | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Se
 3.1.		agregamos los permisos de select 			GRANT SELECT ON mysql.user TO 'holberton_user'@'localhost' IDENTIFIED BY 'projectcorrection280hbtn';
 4.		configuramos el archivo conf del server 2.	sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
 					agregamos:	
-							#bind-address            = 12.34.56.789
+							#bind-address           = 12.34.56.789
 							server-id               = 2
 							relay-log               = /var/log/mysql/mysql-relay-bin.log
 							log_bin                 = /var/log/mysql/mysql-bin.log
 							binlog_do_db            = tyrell_corp
 
 5.		reiniciamos mysql					sudo service mysql restart
-6.		entramos a Mysql y digitamos				CHANGE MASTER TO MASTER_HOST='35.227.123.120',MASTER_USER='replica_user', MASTER_PASSWORD='root', MASTER_LOG_FILE='mysql-bin.000001', MASTER_LOG_POS=  154;
-							el numero 154 es el numero que dio arribaen el punto 9 en el server 1.
+6.		entramos a Mysql y digitamos				
+		CHANGE MASTER TO MASTER_HOST='35.227.123.120', MASTER_USER='replica_user', MASTER_PASSWORD='root', MASTER_LOG_FILE='mysql-bin.000001', MASTER_LOG_POS=  154;
+		
+		el numero 154 es el numero que dio arribaen el punto 9 en el server 1.
+
 7.		iniciamos el esclavo					START SLAVE;
 8.		para ver los detalles 				SHOW SLAVE STATUS\G
 9.		fin
 10.		Si hay un problema en la conexión, puede intentar
- iniciar el esclavo con un comando para omitirlo: 	SET GLOBAL SQL_SLAVE_SKIP_COUNTER = 1; SLAVE START;
+		iniciar el esclavo con un comando para omitirlo: 	SET GLOBAL SQL_SLAVE_SKIP_COUNTER = 1; SLAVE START;
