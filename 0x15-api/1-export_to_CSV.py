@@ -22,4 +22,4 @@ if __name__ == "__main__":
         cvsW = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
         for task in t:
             cvsW.writerow([int(sys.argv[1]), user[0]['username'],
-                                 task['completed'], task['title']])
+                           task['completed'], task['title']])
