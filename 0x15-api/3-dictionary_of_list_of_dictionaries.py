@@ -6,28 +6,27 @@ import requests
 import sys
 
 if __name__ == "__main__":
-    url = 'https://jsonplaceholder.typicode.com/todos'
-    response0 = requests.get(url)
+    url = 'https://jsonplaceholder.typicode.com/'
+    response0 = requests.get(url + 'todos/')
     if response0.status_code == 200:
         t = response0.json()
 
-    url = 'https://jsonplaceholder.typicode.com/users'
-    response1 = requests.get(url)
+    response1 = requests.get(url + 'users/')
     if response1.status_code == 200:
         users = response1.json()
 
     dicx = {}
     for user in users:
         username = user['username']
-        pepe = []
+        ll = []
         for task in t:
             if task['userId'] == user['id']:
-                dict_info = {}
-                dict_info['username'] = username
-                dict_info['task'] = task['title']
-                dict_info['completed'] = task['completed']
-                pepe.append(dict_info)
-        dicx[user['id']] = pepe
+                di = {}
+                di['username'] = username
+                di['task'] = task['title']
+                di['completed'] = task['completed']
+                ll.append(di)
+        dicx[user['id']] = ll
 
     with open("todo_all_employees.json", 'w') as f:
         json.dump(dicx, f)
