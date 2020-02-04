@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 '''get employeed information with ID'''
+
 import requests
-import json
 import sys
 
 
