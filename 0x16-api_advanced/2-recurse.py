@@ -19,9 +19,5 @@ def recurse(subreddit, hot_list=[], after=""):
         if key is not None:
             recurse(subreddit, hot_list, key)
         return hot_list
-
-    #    top10 = response.json()
-    #    for i in range(10):
-    #        print(top10['data']['children'][i]['data']['title'])
     else:
-        return ("None")
+        return None
