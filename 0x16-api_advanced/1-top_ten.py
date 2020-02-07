@@ -16,4 +16,5 @@ def top_ten(subreddit):
         for i in range(10):
             print(top10['data']['children'][i]['data']['title'])
     else:
-        return 0
+        return print("None")
+        
